@@ -1,8 +1,8 @@
 ---
 name: "User Story"
 about: "Capture user stories with clear roles, goals, and benefits"
-labels: user story
-title: "[User Story]: As a [role], I need [function]"
+labels: "user story"
+title: "User Story"
 body:
   - type: input
     attributes:
