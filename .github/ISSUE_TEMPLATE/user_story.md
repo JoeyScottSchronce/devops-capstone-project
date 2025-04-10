@@ -1,15 +1,20 @@
 ---
-name: "User Story"
-about: "Capture user stories with clear roles, goals, and benefits"
-labels: "user story"
-title: "User Story"
-body:
-  - type: input
-    id: As_a
-    attributes:
-      label: As a
-      description: "As a [role]"
-      placeholder: "Describe the role (e.g., user, admin)"
-    validations:
-      required: true
+name: User Story
+about: Capture user stories with clear roles, goals, and benefits
+title: User Story
+labels: user story
+assignees: ''
+
 ---
+
+**As a** [role]  
+**I need** [function]  
+**So that** [benefit]  
+      
+### Details and Assumptions
+    * [document what you know]      
+### Acceptance Criteria     
+    gherkin 
+    Given [some context]
+    When [certain action is taken]
+    Then [the outcome of action is observed]
