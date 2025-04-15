@@ -12,7 +12,7 @@ from tests.factories import AccountFactory
 from service.common import status  # HTTP Status Codes
 from service.models import db, Account, init_db
 from service.routes import app
-from service import talisman 
+from service import talisman
 
 DATABASE_URI = os.getenv(
     "DATABASE_URI", "postgresql://postgres:postgres@localhost:5432/postgres"
@@ -20,11 +20,13 @@ DATABASE_URI = os.getenv(
 
 BASE_URL = "/accounts"
 
-HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}  #added for Flask-Talisman
+HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}  # added for Flask-Talisman
 
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+
+
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
@@ -198,3 +200,9 @@ class TestAccountService(TestCase):
 
         for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
+
+    def test_cors_security(self):
+        '''It should return a cors header'''
+        response = self.client.get("/", environ_overrides=HTTPS_ENVIRON)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.headers.get("Access-Control-Allow-Origin"), "*")
